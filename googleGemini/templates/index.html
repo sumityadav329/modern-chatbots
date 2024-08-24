@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Health App</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Gemini Health App</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Analyze Your Meals with Gemini Vision</h1>
+                <p>Upload your food images and get detailed nutritional information instantly.</p>
+                <input type="file" id="imageUpload" accept="image/*">
+                <button id="analyzeButton">Analyze</button>
+            </div>
+        </section>
+
+        <section class="results" id="results">
+            <div class="container">
+                <h2>Analysis Results</h2>
+                <div id="resultContent">
+                    <!-- Analysis results will be displayed here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Gemini Health App. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>
