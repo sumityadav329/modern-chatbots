@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Chat with the Bot</h1>
+        <div class="card">
+            <div class="card-body">
+                <div id="chat-box" class="mb-3 p-3">
+                    {% for message in chat_history %}
+                        <div class="mb-2">
+                            <div class="{{ message.role }} p-2 rounded" style="max-width: 60%; {{ 'float: right;' if message.role == 'user' else '' }}">
+                                {{ message.content }}
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <form method="POST">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="message" placeholder="Type your message..." autofocus required>
+                        <button class="btn btn-primary" type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS (Optional, for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chatBox = document.getElementById("chat-box");
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+    </script>
+</body>
+</html>

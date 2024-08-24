@@ -18,6 +18,10 @@ if API_TOKEN:
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
+    
+    # Debug: Print the raw response
+    print("API Response:", response.json())
+    
     return response.json()
 
 chat_history = []
@@ -41,8 +45,16 @@ def index():
 
         response = query(payload)
 
-        if isinstance(response, dict) and 'generated_text' in response:
-            bot_response = response['generated_text']
+        # Check the structure of the response and extract the generated text
+        if isinstance(response, dict):
+            if 'generated_text' in response:
+                bot_response = response['generated_text']
+            elif 'conversation' in response and 'generated_responses' in response['conversation']:
+                bot_response = response['conversation']['generated_responses'][-1]
+            else:
+                bot_response = 'Sorry, I did not understand that.'
+        elif isinstance(response, list) and len(response) > 0 and 'generated_text' in response[0]:
+            bot_response = response[0]['generated_text']
         else:
             bot_response = 'Sorry, I did not understand that.'
 
