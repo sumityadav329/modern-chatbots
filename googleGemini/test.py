@@ -10,7 +10,7 @@ load_dotenv()
 genai.configure(api_key=os.getenv('API_KEY'))
 
 # Load Gemini model and start chat
-model = genai.GenerativeModel(model_name="gemini-pro")
+model = genai.GenerativeModel(model_name="gemini-1.5-flash-8b")
 chat = model.start_chat(history=[])
 
 def get_gemini_response(query):
